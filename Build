@@ -1,0 +1,16 @@
+!/bin/bash
+
+echo clean
+dotnet clean
+echo restore
+dotnet restore
+
+echo build
+dotnet build
+echo publish
+dotnet publish -r linux-arm -c Release
+cp  ./Ressources/* ./bin/Release/netcoreapp2.0/linux-arm/publish
+
+echo upload
+echo add your ip and user name to upload
+#scp  -r ./bin/Release/netcoreapp2.0/linux-arm/publish  pi@192.168.178.103:/home/pi/audio/MusicPlayer--a
